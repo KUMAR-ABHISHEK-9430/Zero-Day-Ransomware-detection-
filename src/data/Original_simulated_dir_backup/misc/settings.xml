@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<systemSettings>
+    <meta>
+        <creator>AntiGravity Builder</creator>
+        <generatedAt>2026-07-17T20:55:07.670321</generatedAt>
+        <version>2.5.0</version>
+    </meta>
+    <parameters>
+        <parameter id="1">
+            <name>param.node_config.setting_1</name>
+            <value>true</value>
+            <description>Simulated parameter configuration option index 1</description>
+        </parameter>
+        <parameter id="2">
+            <name>param.node_config.setting_2</name>
+            <value>true</value>
+            <description>Simulated parameter configuration option index 2</description>
+        </parameter>
+        <parameter id="3">
+            <name>param.node_config.setting_3</name>
+            <value>true</value>
+            <description>Simulated parameter configuration option index 3</description>
+        </parameter>
+        <parameter id="4">
+            <name>param.node_config.setting_4</name>
+            <value>7162</value>
+            <description>Simulated parameter configuration option index 4</description>
+        </parameter>
+        <parameter id="5">
+            <name>param.node_config.setting_5</name>
+            <value>mode-C</value>
+            <description>Simulated parameter configuration option index 5</description>
+        </parameter>
+        <parameter id="6">
+            <name>param.node_config.setting_6</name>
+            <value>mode-C</value>
+            <description>Simulated parameter configuration option index 6</description>
+        </parameter>
+        <parameter id="7">
+            <name>param.node_config.setting_7</name>
+            <value>5107</value>
+            <description>Simulated parameter configuration option index 7</description>
+        </parameter>
+        <parameter id="8">
+            <name>param.node_config.setting_8</name>
+            <value>true</value>
+            <description>Simulated parameter configuration option index 8</description>
+        </parameter>
+        <parameter id="9">
+            <name>param.node_config.setting_9</name>
+            <value>false</value>
+            <description>Simulated parameter configuration option index 9</description>
+        </parameter>
+        <parameter id="10">
+            <name>param.node_config.setting_10</name>
+            <value>false</value>
+            <description>Simulated parameter configuration option index 10</description>
+        </parameter>
+        <parameter id="11">
+            <name>param.node_config.setting_11</name>
+            <value>false</value>
+            <description>Simulated parameter configuration option index 11</description>
+        </parameter>
+        <parameter id="12">
+            <name>param.node_config.setting_12</name>
+            <value>6629</value>
+            <description>Simulated parameter configuration option index 12</description>
+        </parameter>
+        <parameter id="13">
+            <name>param.node_config.setting_13</name>
+            <value>true</value>
+            <description>Simulated parameter configuration option index 13</description>
+        </parameter>
+        <parameter id="14">
+            <name>param.node_config.setting_14</name>
+            <value>9905</value>
+            <description>Simulated parameter configuration option index 14</description>
+        </parameter>
+        <parameter id="15">
+            <name>param.node_config.setting_15</name>
+            <value>6415</value>
+            <description>Simulated parameter configuration option index 15</description>
+        </parameter>
+        <parameter id="16">
+            <name>param.node_config.setting_16</name>
+            <value>4642</value>
+            <description>Simulated parameter configuration option index 16</description>
+        </parameter>
+        <parameter id="17">
+            <name>param.node_config.setting_17</name>
+            <value>mode-C</value>
+            <description>Simulated parameter configuration option index 17</description>
+        </parameter>
+        <parameter id="18">
+            <name>param.node_config.setting_18</name>
+            <value>mode-A</value>
+            <description>Simulated parameter configuration option index 18</description>
+        </parameter>
+        <parameter id="19">
+            <name>param.node_config.setting_19</name>
+            <value>false</value>
+            <description>Simulated parameter configuration option index 19</description>
+        </parameter>
+        <parameter id="20">
+            <name>param.node_config.setting_20</name>
+            <value>false</value>
+            <description>Simulated parameter configuration option index 20</description>
+        </parameter>
+        <parameter id="21">
+            <name>param.node_config.setting_21</name>
+            <value>false</value>
+            <description>Simulated parameter configuration option index 21</description>
+        </parameter>
+        <parameter id="22">
+            <name>param.node_config.setting_22</name>
+            <value>true</value>
+            <description>Simulated parameter configuration option index 22</description>
+        </parameter>
+        <parameter id="23">
+            <name>param.node_config.setting_23</name>
+            <value>2283</value>
+            <description>Simulated parameter configuration option index 23</description>
+        </parameter>
+        <parameter id="24">
+            <name>param.node_config.setting_24</name>
+            <value>false</value>
+            <description>Simulated parameter configuration option index 24</description>
+        </parameter>
+        <parameter id="25">
+            <name>param.node_config.setting_25</name>
+            <value>8347</value>
+            <description>Simulated parameter configuration option index 25</description>
+        </parameter>
+        <parameter id="26">
+            <name>param.node_config.setting_26</name>
+            <value>3693</value>
+            <description>Simulated parameter configuration option index 26</description>
+        </parameter>
+        <parameter id="27">
+            <name>param.node_config.setting_27</name>
+            <value>9694</value>
+            <description>Simulated parameter configuration option index 27</description>
+        </parameter>
+        <parameter id="28">
+            <name>param.node_config.setting_28</name>
+            <value>true</value>
+            <description>Simulated parameter configuration option index 28</description>
+        </parameter>
+        <parameter id="29">
+            <name>param.node_config.setting_29</name>
+            <value>4206</value>
+            <description>Simulated parameter configuration option index 29</description>
+        </parameter>
+        <parameter id="30">
+            <name>param.node_config.setting_30</name>
+            <value>false</value>
+            <description>Simulated parameter configuration option index 30</description>
+        </parameter>
+        <parameter id="31">
+            <name>param.node_config.setting_31</name>
+            <value>false</value>
+            <description>Simulated parameter configuration option index 31</description>
+        </parameter>
+        <parameter id="32">
+            <name>param.node_config.setting_32</name>
+            <value>7566</value>
+            <description>Simulated parameter configuration option index 32</description>
+        </parameter>
+        <parameter id="33">
+            <name>param.node_config.setting_33</name>
+            <value>734</value>
+            <description>Simulated parameter configuration option index 33</description>
+        </parameter>
+        <parameter id="34">
+            <name>param.node_config.setting_34</name>
+            <value>true</value>
+            <description>Simulated parameter configuration option index 34</description>
+        </parameter>
+        <parameter id="35">
+            <name>param.node_config.setting_35</name>
+            <value>false</value>
+            <description>Simulated parameter configuration option index 35</description>
+        </parameter>
+        <parameter id="36">
+            <name>param.node_config.setting_36</name>
+            <value>false</value>
+            <description>Simulated parameter configuration option index 36</description>
+        </parameter>
+        <parameter id="37">
+            <name>param.node_config.setting_37</name>
+            <value>true</value>
+            <description>Simulated parameter configuration option index 37</description>
+        </parameter>
+        <parameter id="38">
+            <name>param.node_config.setting_38</name>
+            <value>mode-B</value>
+            <description>Simulated parameter configuration option index 38</description>
+        </parameter>
+        <parameter id="39">
+            <name>param.node_config.setting_39</name>
+            <value>true</value>
+            <description>Simulated parameter configuration option index 39</description>
+        </parameter>
+        <parameter id="40">
+            <name>param.node_config.setting_40</name>
+            <value>true</value>
+            <description>Simulated parameter configuration option index 40</description>
+        </parameter>
+        <parameter id="41">
+            <name>param.node_config.setting_41</name>
+            <value>3644</value>
+            <description>Simulated parameter configuration option index 41</description>
+        </parameter>
+        <parameter id="42">
+            <name>param.node_config.setting_42</name>
+            <value>9285</value>
+            <description>Simulated parameter configuration option index 42</description>
+        </parameter>
+        <parameter id="43">
+            <name>param.node_config.setting_43</name>
+            <value>false</value>
+            <description>Simulated parameter configuration option index 43</description>
+        </parameter>
+        <parameter id="44">
+            <name>param.node_config.setting_44</name>
+            <value>false</value>
+            <description>Simulated parameter configuration option index 44</description>
+        </parameter>
+        <parameter id="45">
+            <name>param.node_config.setting_45</name>
+            <value>false</value>
+            <description>Simulated parameter configuration option index 45</description>
+        </parameter>
+        <parameter id="46">
+            <name>param.node_config.setting_46</name>
+            <value>mode-A</value>
+            <description>Simulated parameter configuration option index 46</description>
+        </parameter>
+        <parameter id="47">
+            <name>param.node_config.setting_47</name>
+            <value>false</value>
+            <description>Simulated parameter configuration option index 47</description>
+        </parameter>
+        <parameter id="48">
+            <name>param.node_config.setting_48</name>
+            <value>true</value>
+            <description>Simulated parameter configuration option index 48</description>
+        </parameter>
+        <parameter id="49">
+            <name>param.node_config.setting_49</name>
+            <value>false</value>
+            <description>Simulated parameter configuration option index 49</description>
+        </parameter>
+        <parameter id="50">
+            <name>param.node_config.setting_50</name>
+            <value>false</value>
+            <description>Simulated parameter configuration option index 50</description>
+        </parameter>
+        <parameter id="51">
+            <name>param.node_config.setting_51</name>
+            <value>7653</value>
+            <description>Simulated parameter configuration option index 51</description>
+        </parameter>
+        <parameter id="52">
+            <name>param.node_config.setting_52</name>
+            <value>true</value>
+            <description>Simulated parameter configuration option index 52</description>
+        </parameter>
+        <parameter id="53">
+            <name>param.node_config.setting_53</name>
+            <value>false</value>
+            <description>Simulated parameter configuration option index 53</description>
+        </parameter>
+        <parameter id="54">
+            <name>param.node_config.setting_54</name>
+            <value>false</value>
+            <description>Simulated parameter configuration option index 54</description>
+        </parameter>
+        <parameter id="55">
+            <name>param.node_config.setting_55</name>
+            <value>135</value>
+            <description>Simulated parameter configuration option index 55</description>
+        </parameter>
+        <parameter id="56">
+            <name>param.node_config.setting_56</name>
+            <value>8143</value>
+            <description>Simulated parameter configuration option index 56</description>
+        </parameter>
+        <parameter id="57">
+            <name>param.node_config.setting_57</name>
+            <value>true</value>
+            <description>Simulated parameter configuration option index 57</description>
+        </parameter>
+        <parameter id="58">
+            <name>param.node_config.setting_58</name>
+            <value>true</value>
+            <description>Simulated parameter configuration option index 58</description>
+        </parameter>
+        <parameter id="59">
+            <name>param.node_config.setting_59</name>
+            <value>true</value>
+            <description>Simulated parameter configuration option index 59</description>
+        </parameter>
+        <parameter id="60">
+            <name>param.node_config.setting_60</name>
+            <value>true</value>
+            <description>Simulated parameter configuration option index 60</description>
+        </parameter>
+        <parameter id="61">
+            <name>param.node_config.setting_61</name>
+            <value>true</value>
+            <description>Simulated parameter configuration option index 61</description>
+        </parameter>
+        <parameter id="62">
+            <name>param.node_config.setting_62</name>
+            <value>true</value>
+            <description>Simulated parameter configuration option index 62</description>
+        </parameter>
+        <parameter id="63">
+            <name>param.node_config.setting_63</name>
+            <value>3761</value>
+            <description>Simulated parameter configuration option index 63</description>
+        </parameter>
+        <parameter id="64">
+            <name>param.node_config.setting_64</name>
+            <value>4721</value>
+            <description>Simulated parameter configuration option index 64</description>
+        </parameter>
+        <parameter id="65">
+            <name>param.node_config.setting_65</name>
+            <value>true</value>
+            <description>Simulated parameter configuration option index 65</description>
+        </parameter>
+        <parameter id="66">
+            <name>param.node_config.setting_66</name>
+            <value>mode-C</value>
+            <description>Simulated parameter configuration option index 66</description>
+        </parameter>
+        <parameter id="67">
+            <name>param.node_config.setting_67</name>
+            <value>true</value>
+            <description>Simulated parameter configuration option index 67</description>
+        </parameter>
+        <parameter id="68">
+            <name>param.node_config.setting_68</name>
+            <value>5740</value>
+            <description>Simulated parameter configuration option index 68</description>
+        </parameter>
+        <parameter id="69">
+            <name>param.node_config.setting_69</name>
+            <value>true</value>
+            <description>Simulated parameter configuration option index 69</description>
+        </parameter>
+        <parameter id="70">
+            <name>param.node_config.setting_70</name>
+            <value>false</value>
+            <description>Simulated parameter configuration option index 70</description>
+        </parameter>
+        <parameter id="71">
+            <name>param.node_config.setting_71</name>
+            <value>3587</value>
+            <description>Simulated parameter configuration option index 71</description>
+        </parameter>
+        <parameter id="72">
+            <name>param.node_config.setting_72</name>
+            <value>true</value>
+            <description>Simulated parameter configuration option index 72</description>
+        </parameter>
+        <parameter id="73">
+            <name>param.node_config.setting_73</name>
+            <value>true</value>
+            <description>Simulated parameter configuration option index 73</description>
+        </parameter>
+        <parameter id="74">
+            <name>param.node_config.setting_74</name>
+            <value>true</value>
+            <description>Simulated parameter configuration option index 74</description>
+        </parameter>
+        <parameter id="75">
+            <name>param.node_config.setting_75</name>
+            <value>mode-A</value>
+            <description>Simulated parameter configuration option index 75</description>
+        </parameter>
+        <parameter id="76">
+            <name>param.node_config.setting_76</name>
+            <value>mode-B</value>
+            <description>Simulated parameter configuration option index 76</description>
+        </parameter>
+        <parameter id="77">
+            <name>param.node_config.setting_77</name>
+            <value>mode-C</value>
+            <description>Simulated parameter configuration option index 77</description>
+        </parameter>
+        <parameter id="78">
+            <name>param.node_config.setting_78</name>
+            <value>true</value>
+            <description>Simulated parameter configuration option index 78</description>
+        </parameter>
+        <parameter id="79">
+            <name>param.node_config.setting_79</name>
+            <value>2630</value>
+            <description>Simulated parameter configuration option index 79</description>
+        </parameter>
+        <parameter id="80">
+            <name>param.node_config.setting_80</name>
+            <value>mode-A</value>
+            <description>Simulated parameter configuration option index 80</description>
+        </parameter>
+        <parameter id="81">
+            <name>param.node_config.setting_81</name>
+            <value>1468</value>
+            <description>Simulated parameter configuration option index 81</description>
+        </parameter>
+        <parameter id="82">
+            <name>param.node_config.setting_82</name>
+            <value>true</value>
+            <description>Simulated parameter configuration option index 82</description>
+        </parameter>
+        <parameter id="83">
+            <name>param.node_config.setting_83</name>
+            <value>false</value>
+            <description>Simulated parameter configuration option index 83</description>
+        </parameter>
+        <parameter id="84">
+            <name>param.node_config.setting_84</name>
+            <value>true</value>
+            <description>Simulated parameter configuration option index 84</description>
+        </parameter>
+        <parameter id="85">
+            <name>param.node_config.setting_85</name>
+            <value>2287</value>
+            <description>Simulated parameter configuration option index 85</description>
+        </parameter>
+        <parameter id="86">
+            <name>param.node_config.setting_86</name>
+            <value>false</value>
+            <description>Simulated parameter configuration option index 86</description>
+        </parameter>
+        <parameter id="87">
+            <name>param.node_config.setting_87</name>
+            <value>7269</value>
+            <description>Simulated parameter configuration option index 87</description>
+        </parameter>
+        <parameter id="88">
+            <name>param.node_config.setting_88</name>
+            <value>mode-A</value>
+            <description>Simulated parameter configuration option index 88</description>
+        </parameter>
+        <parameter id="89">
+            <name>param.node_config.setting_89</name>
+            <value>false</value>
+            <description>Simulated parameter configuration option index 89</description>
+        </parameter>
+        <parameter id="90">
+            <name>param.node_config.setting_90</name>
+            <value>true</value>
+            <description>Simulated parameter configuration option index 90</description>
+        </parameter>
+        <parameter id="91">
+            <name>param.node_config.setting_91</name>
+            <value>mode-A</value>
+            <description>Simulated parameter configuration option index 91</description>
+        </parameter>
+        <parameter id="92">
+            <name>param.node_config.setting_92</name>
+            <value>false</value>
+            <description>Simulated parameter configuration option index 92</description>
+        </parameter>
+        <parameter id="93">
+            <name>param.node_config.setting_93</name>
+            <value>false</value>
+            <description>Simulated parameter configuration option index 93</description>
+        </parameter>
+        <parameter id="94">
+            <name>param.node_config.setting_94</name>
+            <value>true</value>
+            <description>Simulated parameter configuration option index 94</description>
+        </parameter>
+        <parameter id="95">
+            <name>param.node_config.setting_95</name>
+            <value>8469</value>
+            <description>Simulated parameter configuration option index 95</description>
+        </parameter>
+        <parameter id="96">
+            <name>param.node_config.setting_96</name>
+            <value>mode-A</value>
+            <description>Simulated parameter configuration option index 96</description>
+        </parameter>
+        <parameter id="97">
+            <name>param.node_config.setting_97</name>
+            <value>false</value>
+            <description>Simulated parameter configuration option index 97</description>
+        </parameter>
+        <parameter id="98">
+            <name>param.node_config.setting_98</name>
+            <value>true</value>
+            <description>Simulated parameter configuration option index 98</description>
+        </parameter>
+        <parameter id="99">
+            <name>param.node_config.setting_99</name>
+            <value>true</value>
+            <description>Simulated parameter configuration option index 99</description>
+        </parameter>
+        <parameter id="100">
+            <name>param.node_config.setting_100</name>
+            <value>6082</value>
+            <description>Simulated parameter configuration option index 100</description>
+        </parameter>
+    </parameters>
+</systemSettings>
