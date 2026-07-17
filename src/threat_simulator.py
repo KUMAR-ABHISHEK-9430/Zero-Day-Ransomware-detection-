@@ -32,6 +32,56 @@ TARGET_DIR = r"C:\projects\ransomware_detection\Zero-Day-Ransomware-detection-\s
 
 
 
+
+
+class PathSanitizer:
+    def __init__(self, allowed_root_dir):
+        # Resolve the allowed root directory to its real, absolute canonical path
+        self.allowed_root = os.path.realpath(allowed_root_dir)
+        
+        # Standard system exclusion keywords (lowercased for uniform matching)
+        self.system_blocklist = [
+            r"c:\windows", 
+            r"system32", 
+            r"syswow64", 
+            r"program files", 
+            r"program files (x86)", 
+            r"programdata", 
+            r"users\all users", 
+            r"\boot", 
+            r"efi"
+        ]
+
+    def is_safe(self, target_path):
+        """
+        Validates that a path is completely canonicalized, resides strictly inside 
+        the allowed directory hierarchy, and does not touch critical system files.
+        """
+        try:
+            # Step 1: Resolve symlinks, '..', and relative elements to get the absolute path
+            canonical_path = os.path.realpath(target_path)
+            canonical_path_lower = canonical_path.lower()
+            
+            # Step 2: Strict OS Blocklist Check
+            for block_keyword in self.system_blocklist:
+                if block_keyword in canonical_path_lower:
+                    print(f"[SECURITY BLOCKED] Critical system path keyword detected: {target_path}")
+                    return False
+                    
+            # Step 3: Boundary Containment Validation
+            common = os.path.commonpath([self.allowed_root, canonical_path])
+            if common != self.allowed_root:
+                print(f"[SECURITY BLOCKED] Directory traversal attempt detected: {target_path}")
+                return False
+                
+            return True
+        except Exception as e:
+            print(f"[ERROR] Path validation failed for {target_path}: {e}")
+            return False
+
+
+
+
 def encrypt_file_in_place(filepath, chunk_size=64 * 1024):
     """Encrypts a single file in-place using a reverse-chunking pattern."""
     try:
@@ -126,6 +176,8 @@ def encrypt_file_in_place(filepath, chunk_size=64 * 1024):
 
 def traverse_and_encrypt(directory,max_workers=4):
     """Recursively walks a directory to encrypt files in-place and returns key mappings."""
+
+    sanitizer = PathSanitizer(allowed_root_dir=directory)
     file_list = []
     
     # Discovery Phase: Walk the directory sequentially to find targets safely
@@ -136,13 +188,18 @@ def traverse_and_encrypt(directory,max_workers=4):
                     if entry.is_dir(follow_symlinks=False):
                         traverse(entry.path)
                     elif entry.is_file():
-                        file_list.append(entry.path)
+                        if sanitizer.is_safe(entry.path):
+                            file_list.append(entry.path)
+                        else:
+                            print(f"  [SKIP] Skipping unsafe path execution: {entry.path}")
         except PermissionError:
             print(f"Permission denied accessing directory: {current_dir}")
 
-    traverse(directory)
-    
+
+
+    traverse(sanitizer.allowed_root)    
     key_manifest = {}
+
     
     # Execution Phase: Distribute discovered files across the thread pool
     print(f"Starting concurrent processing with {max_workers} threads across {len(file_list)} files...")
