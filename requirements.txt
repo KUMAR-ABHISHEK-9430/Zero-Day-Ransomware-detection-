@@ -1,0 +1,11 @@
+# For getting the Windows Event Log
+ctypes
+pywintrace
+json
+
+
+
+
+# for simulated attacks
+cryptography
+os
