@@ -1,0 +1,74 @@
+PYHESSIAN: Neural Networks Through the
+Lens of the HessianZhewei Yao∗, Amir Gholami∗, Kurt Keutzer, Michael W. Mahoney
+University of California, Berkeley{zheweiy, amirgh, keutzer, mahoneymw}@berkeley.eduAbstract—We present PYHESSIAN, a new scalable framework
+that enables fast computation of Hessian (i.e., second-order
+derivative) information for deep neural networks. PYHESSIANenables fast computations of the top Hessian eigenvalues, the Hessian trace, and the full Hessian eigenvalue/spectral density, and it
+supports distributed-memory execution on cloud/supercomputer
+systems and is available as open source [1]. This general framework can be used to analyze neural network models, including
+the topology of the loss landscape (i.e., curvature information)
+to gain insight into the behavior of different models/optimizers.
+To illustrate this, we analyze the effect of residual connections
+and Batch Normalization layers on the trainability of neural
+networks. One recent claim, based on simpler first-order analysis,
+is that residual connections and Batch Normalization make the
+loss landscape “smoother”, thus making it easier for Stochastic
+Gradient Descent to converge to a good solution. Our extensive
+analysis shows new finer-scale insights, demonstrating that, while
+conventional wisdom is sometimes validated, in other cases it is
+simply incorrect. In particular, we find that Batch Normalization
+does not necessarily make the loss landscape smoother, especially
+for shallower networks.I. INTRODUCTIONResidual neural networks [25] (ResNets) are widely used
+Neural Networks (NNs) for various learning tasks. The two
+main architectural components of ResNets are residual connections [25] and Batch Normalization (BN) layers [26]. However,
+going beyond motivating stories to characterize precisely when
+and why these two popular architectural ingredients help or
+hurt training/generalization—especially in terms of measurableproperties of the model—is still largely unsolved. Relatedly,
+characterizing whether other suggested architectural changes
+will help or hurt training/generalization is still done in a largely
+ad hoc manner. For example, it is often motivated by plausible
+but untested intuitions, and it is not characterized in terms of
+measurable properties of the model.
+In this work, we present and apply PYHESSIAN, an open
+source scalable framework with which one can directly analyze Hessian information, i.e., second-derivative information
+w.r.t. model parameters, in order to address these and related questions. PYHESSIAN computes Hessian information by
+applying known techniques from Numerical Linear Algebra
+(NLA) [5, 22, 30] and Randomized NLA (RandNLA) [4, 18,
+19, 33, 48, 53] (that are approximate but come with rigorous
+theory). PYHESSIAN enables computing Hessian information—
+including top Hessian eigenvalues, Hessian trace, and Hessian
+eigenvalue spectral density (ESD), and it supports distributed∗Equal contribution.implementation—allowing distributed-memory execution on
+both cloud (e.g., AWS, Google Cloud) and supercomputer
+systems, for fast and efficient Hessian computation.
+As an application of PYHESSIAN, we use it to analyze
+the impact of residual connections and BN on the trainability
+of NNs, leading to new insights. In more detail, our main
+contributions are the following:• We introduce PYHESSIAN, a new framework for direct and
+efficient computation of Hessian information, including
+the top eigenvalue, the trace, and the full ESD [1]. We
+also apply PYHESSIAN to study how residual connections
+and BN affect training.• We observe that removing BN layers from ResNet
+(denoted below as ResNet−BN ) leads to rapid increase
+of the Hessian spectrum (the top eigenvalue, the trace,
+and the ESD support range). This increase is significantly
+more rapid for deeper models. See Figure 2, A.11, A.12,
+and A.13 on Cifar-10 as well as Figure A.9, A.15, A.16,
+and A.17 on Cifar-100.• We observe that, for shallower networks (ResNet20),
+removing the BN layer results in a flatter Hessian spectrum,
+as compared to standard ResNet20 with BN. See Figure 2
+and 3 on Cifar-10 and Figure A.9 and A.15 on Cifar100. This observation is the opposite of the common
+belief that the addition of BN layers make the loss
+landscape smoother (which we observe to hold only for
+deeper networks).• We observe that, for deeper networks (in our case,
+ResNet32/38), removing BN results in converging to
+sharper local minima, as compared to ResNet with BN.
+See Figure 2, 3, A.19 and A.20 on Cifar-10 as well
+as Figure A.9, A.15, A.23 and A.24 on Cifar-100.• We show that removing residual connections from
+ResNet generally makes the top eigenvalue, the trace,
+and the Hessian ESD support range increase slightly.
+This increase is consistent for both shallower and
+deeper models (ResNet20/32/38/56). See Figure 2, 3,
+A.14, A.18, A.19, A.20, and A.21 on Cifar-10 as well
+as Figure A.9, A.15, A.22, A.23, and A.24 on Cifar-100.• We perform Hessian analysis for different stages of
+ResNet models (details in Section IV-A), and we find that
+generally BN is more important for the final stagesthan for earlier stages. In particular, removing BN from
+the last stage significantly degrades testing performance,

@@ -1,0 +1,100 @@
+Jul 15 21:09:50 localhost rsyslogd: [origin software="rsyslogd" swVersion="8.1901.0"] start
+Jul 15 21:12:27 localhost kernel: [  154.218090] ext4-fs (sda1): mounted filesystem with ordered data mode.
+Jul 15 21:15:39 localhost sshd[841]: Accepted publickey for admin from 192.168.1.100 port 52342 ssh2
+Jul 15 21:17:27 localhost systemd[1]: Started Journal Service.
+Jul 15 21:27:45 localhost dhclient[412]: bound to 192.168.1.50 -- renewal in 18000 seconds.
+Jul 15 21:37:37 localhost systemd[1]: Starting User Manager for UID 1000...
+Jul 15 21:40:37 localhost ntpd[650]: Selected source 192.168.1.1 (local network gateway)
+Jul 15 21:46:31 localhost systemd[1]: Starting User Manager for UID 1000...
+Jul 15 21:59:48 localhost dhclient[412]: bound to 192.168.1.50 -- renewal in 18000 seconds.
+Jul 15 22:00:51 localhost systemd[1]: Started Journal Service.
+Jul 15 22:10:01 localhost ntpd[650]: Selected source 192.168.1.1 (local network gateway)
+Jul 15 22:15:02 localhost dhclient[412]: bound to 192.168.1.50 -- renewal in 18000 seconds.
+Jul 15 22:26:27 localhost sshd[841]: Accepted publickey for admin from 192.168.1.100 port 52342 ssh2
+Jul 15 22:38:12 localhost ntpd[650]: Selected source 192.168.1.1 (local network gateway)
+Jul 15 22:41:52 localhost systemd[1]: Started OS query logging backend agent.
+Jul 15 22:43:51 localhost CRON[902]: (root) CMD (   /usr/local/bin/check_telemetry.sh > /dev/null 2>&1)
+Jul 15 22:52:21 localhost systemd-udevd[305]: Product: Virtual Host Controller Driver
+Jul 15 22:54:40 localhost kernel: [    0.000000] Booting Linux version 6.1.0-23-amd64 (debian-kernel@lists.debian.org)
+Jul 15 23:06:23 localhost kernel: imklog 5.8.11, log source = /proc/kmsg started.
+Jul 15 23:07:30 localhost sshd[841]: Accepted publickey for admin from 192.168.1.100 port 52342 ssh2
+Jul 15 23:13:35 localhost systemd[1]: Started OS query logging backend agent.
+Jul 15 23:25:40 localhost systemd[1]: Started Journal Service.
+Jul 15 23:32:25 localhost kernel: [  154.218090] ext4-fs (sda1): mounted filesystem with ordered data mode.
+Jul 15 23:43:18 localhost dhclient[412]: DHCPACK of 192.168.1.50 from 192.168.1.1
+Jul 15 23:52:02 localhost systemd[1]: Created slice User Slice of UID 1000.
+Jul 16 00:01:59 localhost systemd[1]: Started Journal Service.
+Jul 16 00:04:54 localhost sshd[841]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Jul 16 00:18:22 localhost ntpd[650]: Selected source 192.168.1.1 (local network gateway)
+Jul 16 00:28:37 localhost dhclient[412]: DHCPACK of 192.168.1.50 from 192.168.1.1
+Jul 16 00:39:31 localhost systemd[1]: Started Journal Service.
+Jul 16 00:52:30 localhost systemd[1]: Started OS query logging backend agent.
+Jul 16 01:06:25 localhost kernel: [  154.218090] ext4-fs (sda1): mounted filesystem with ordered data mode.
+Jul 16 01:08:06 localhost systemd[1]: Started OS query logging backend agent.
+Jul 16 01:19:58 localhost kernel: [  154.218090] ext4-fs (sda1): mounted filesystem with ordered data mode.
+Jul 16 01:35:06 localhost systemd-udevd[305]: Product: Virtual Host Controller Driver
+Jul 16 01:39:17 localhost systemd-udevd[305]: Product: Virtual Host Controller Driver
+Jul 16 01:47:22 localhost kernel: imklog 5.8.11, log source = /proc/kmsg started.
+Jul 16 01:55:19 localhost CRON[902]: pam_unix(cron:session): session opened for user root by (uid=0)
+Jul 16 02:04:00 localhost CRON[902]: pam_unix(cron:session): session closed for user root
+Jul 16 02:09:20 localhost rsyslogd: [origin software="rsyslogd" swVersion="8.1901.0"] start
+Jul 16 02:15:06 localhost systemd[1]: Started OS query logging backend agent.
+Jul 16 02:30:34 localhost CRON[902]: pam_unix(cron:session): session opened for user root by (uid=0)
+Jul 16 02:41:36 localhost CRON[902]: pam_unix(cron:session): session opened for user root by (uid=0)
+Jul 16 02:56:48 localhost kernel: [  154.218090] ext4-fs (sda1): mounted filesystem with ordered data mode.
+Jul 16 03:04:06 localhost kernel: [  154.218090] ext4-fs (sda1): mounted filesystem with ordered data mode.
+Jul 16 03:10:02 localhost dhclient[412]: bound to 192.168.1.50 -- renewal in 18000 seconds.
+Jul 16 03:21:47 localhost dbus-daemon[450]: [system] Successfully activated service 'org.freedesktop.hostname1'
+Jul 16 03:35:51 localhost kernel: [    0.000000] Booting Linux version 6.1.0-23-amd64 (debian-kernel@lists.debian.org)
+Jul 16 03:41:34 localhost systemd[1]: Created slice User Slice of UID 1000.
+Jul 16 03:54:47 localhost sshd[841]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Jul 16 03:58:10 localhost systemd[1]: Created slice User Slice of UID 1000.
+Jul 16 04:13:11 localhost kernel: imklog 5.8.11, log source = /proc/kmsg started.
+Jul 16 04:26:45 localhost kernel: imklog 5.8.11, log source = /proc/kmsg started.
+Jul 16 04:39:34 localhost CRON[902]: pam_unix(cron:session): session closed for user root
+Jul 16 04:47:17 localhost CRON[902]: pam_unix(cron:session): session opened for user root by (uid=0)
+Jul 16 05:02:25 localhost rsyslogd: [origin software="rsyslogd" swVersion="8.1901.0"] start
+Jul 16 05:09:43 localhost systemd[1]: Started Journal Service.
+Jul 16 05:17:13 localhost sshd[841]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Jul 16 05:31:09 localhost ntpd[650]: Selected source 192.168.1.1 (local network gateway)
+Jul 16 05:37:21 localhost systemd[1]: Started OS query logging backend agent.
+Jul 16 05:45:22 localhost dbus-daemon[450]: [system] Successfully activated service 'org.freedesktop.hostname1'
+Jul 16 05:46:59 localhost CRON[902]: pam_unix(cron:session): session opened for user root by (uid=0)
+Jul 16 05:58:59 localhost systemd-udevd[305]: Product: Virtual Host Controller Driver
+Jul 16 06:08:37 localhost kernel: [  154.218090] ext4-fs (sda1): mounted filesystem with ordered data mode.
+Jul 16 06:14:45 localhost systemd[1]: Started OS query logging backend agent.
+Jul 16 06:21:16 localhost kernel: [    0.000000] Booting Linux version 6.1.0-23-amd64 (debian-kernel@lists.debian.org)
+Jul 16 06:25:06 localhost kernel: [  154.218090] ext4-fs (sda1): mounted filesystem with ordered data mode.
+Jul 16 06:33:46 localhost kernel: [    0.000000] Booting Linux version 6.1.0-23-amd64 (debian-kernel@lists.debian.org)
+Jul 16 06:40:45 localhost CRON[902]: (root) CMD (   /usr/local/bin/check_telemetry.sh > /dev/null 2>&1)
+Jul 16 06:51:30 localhost systemd[1]: Starting User Manager for UID 1000...
+Jul 16 07:05:48 localhost systemd[1]: Starting User Manager for UID 1000...
+Jul 16 07:12:47 localhost kernel: imklog 5.8.11, log source = /proc/kmsg started.
+Jul 16 07:18:54 localhost systemd[1]: Created slice User Slice of UID 1000.
+Jul 16 07:34:32 localhost systemd[1]: Created slice User Slice of UID 1000.
+Jul 16 07:37:43 localhost kernel: imklog 5.8.11, log source = /proc/kmsg started.
+Jul 16 07:44:46 localhost systemd[1]: Started Journal Service.
+Jul 16 07:51:49 localhost systemd[1]: Started Journal Service.
+Jul 16 08:05:32 localhost kernel: [    0.000000] Booting Linux version 6.1.0-23-amd64 (debian-kernel@lists.debian.org)
+Jul 16 08:07:26 localhost dbus-daemon[450]: [system] Successfully activated service 'org.freedesktop.hostname1'
+Jul 16 08:11:43 localhost dhclient[412]: DHCPACK of 192.168.1.50 from 192.168.1.1
+Jul 16 08:27:20 localhost dhclient[412]: DHCPREQUEST for 192.168.1.50 on eth0 to 255.255.255.255 port 67
+Jul 16 08:42:51 localhost CRON[902]: pam_unix(cron:session): session closed for user root
+Jul 16 08:50:51 localhost dbus-daemon[450]: [system] Successfully activated service 'org.freedesktop.hostname1'
+Jul 16 08:53:06 localhost dhclient[412]: bound to 192.168.1.50 -- renewal in 18000 seconds.
+Jul 16 08:56:15 localhost CRON[902]: pam_unix(cron:session): session closed for user root
+Jul 16 09:08:29 localhost kernel: imklog 5.8.11, log source = /proc/kmsg started.
+Jul 16 09:15:05 localhost dbus-daemon[450]: [system] Successfully activated service 'org.freedesktop.hostname1'
+Jul 16 09:18:48 localhost dhclient[412]: DHCPREQUEST for 192.168.1.50 on eth0 to 255.255.255.255 port 67
+Jul 16 09:22:18 localhost ntpd[650]: Selected source 192.168.1.1 (local network gateway)
+Jul 16 09:24:06 localhost systemd-udevd[305]: Product: Virtual Host Controller Driver
+Jul 16 09:26:18 localhost dhclient[412]: DHCPREQUEST for 192.168.1.50 on eth0 to 255.255.255.255 port 67
+Jul 16 09:28:30 localhost CRON[902]: (root) CMD (   /usr/local/bin/check_telemetry.sh > /dev/null 2>&1)
+Jul 16 09:34:31 localhost systemd[1]: Starting User Manager for UID 1000...
+Jul 16 09:44:19 localhost sshd[841]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Jul 16 09:47:41 localhost systemd-udevd[305]: Product: Virtual Host Controller Driver
+Jul 16 09:53:28 localhost systemd[1]: Started Journal Service.
+Jul 16 10:00:21 localhost kernel: imklog 5.8.11, log source = /proc/kmsg started.
+Jul 16 10:12:44 localhost systemd[1]: Starting User Manager for UID 1000...
+Jul 16 10:27:49 localhost CRON[902]: pam_unix(cron:session): session opened for user root by (uid=0)
+Jul 16 10:42:47 localhost sshd[841]: Accepted publickey for admin from 192.168.1.100 port 52342 ssh2

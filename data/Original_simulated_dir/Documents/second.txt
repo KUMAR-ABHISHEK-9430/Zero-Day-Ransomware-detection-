@@ -1,0 +1,145 @@
+The authors argued that a diagonal approximation may not
+be very accurate, as off-diagonal elements of the Hessian are
+important; and they showed that capturing these off-diagonal
+elements does indeed lead to better performance, as compared
+to [27]. In the recent work of [15], a layer-wise pruning method
+was proposed. This restricts the Hessian computations to each
+layer, and it provides bounds on the performance drop after
+pruning. More recently, [16, 17, 47] proposed a Hessian-based
+method for quantizing2 NN models, achieving significantly
+better performance, as compared to first-order based methods.
+(Quasi-)Newton (second-order) methods [2, 3, 8, 14, 38, 40,
+41] have been extensively explored for convex optimization
+problems [9]. In particular, in the seminal work of [31, 37], a
+Quasi-Newton method was proposed to accelerate first-order
+based optimization methods. The idea is to precondition the gradient vector with the inverse of the Hessian. However, instead
+of directly using the Hessian, a series of approximate rank-1
+updates are used instead. Follow up work of [46] extended
+this method and proposed a stochastic BFGS algorithm. More
+recently, the work of [7] proposed an adaptive batch size
+Limited-memory BFGS method [31] for large-scale machine
+learning problems; and an adaptive batch size method based
+on measuring directly the spectrum of the Hessian has been
+proposed [52] for large-scale NN training.
+Hessian-based methods have also been explored for nonconvex problems, including trust-region (TR) [13], cubic regularization (CR) [36], and its adaptive variant (ARC) [11, 12].
+For these problems, [10, 20, 42, 51] provide sketching/sampling
+techniques for Newton methods, where guarantees are established for sampling size and convergence rates; and [49–51, 54]
+show that sketching/sampling methods can significantly reduce
+the need for data in approximate Hessian computation.
+One important concern for applying second-order methods
+to training is the cost of computing Hessian information
+at every iteration. The work of [35] proposed the so-called
+Kronecker-Factored Approximations (K-FAC) method, which
+approximates the Fisher information matrix into a Kronecker
+product. However, the approach comes with several new
+hyperparameters, which can actually be more expensive to
+tune, compared to first-order methods [32].
+A major limitation in most of this prior work is that tests
+are typically restricted to small/simple NN models that may
+not be representative of NN workloads that are encountered in
+practice. This is in part due to the lack of a scalable and easily
+programmable framework that could be used to test secondorder methods for a wide range of state-of-the-art models.
+Addressing this is the main motivation behind our development
+of PYHESSIAN, which is released as open-source software
+and is available to researchers [1]. In this paper, we illustrate
+how PYHESSIAN can be used for analyzing the NN behaviour
+during training, even for very deep state-of-the-art models.
+Future work includes using this framework for second-order
+based optimization, by testing it on modern NN models, as2Quantization is a process in which the precision of the parameters is
+reduced from single precision (32-bits) to a lower precision (such as 8-bits).well as fairly gauging the benefit that may arise from such
+methods, in light of the cost for any extra hyperparameter
+tuning that may be needed [32].Residual Connections and Batch Normalization: Residual
+connections [25] and BN [26] are two of the most important
+ingredients in modern convolutional NNs. There have been
+different hypothesis offered for why these two components
+help training/generalization. First, the original motivation for
+residual connections was that they allow gradient information
+to flow to earlier layers of the NN, thereby reducing the
+vanishing gradient problem during training. The empirical study
+of [29] found that deep NNs with residual connections exhibit
+a significantly smoother loss landscape, as compared to models
+without residual connections. This was achieved by the socalled filter-normalized random direction method to plot 3D
+loss landscapes, i.e., not through direct analysis of the Hessian
+spectrum. This result is interesting, but it is hard to draw
+conclusions with perturbations in two directions, for a model
+that has millions of parameters (and thus millions of possible
+perturbation directions).
+Second, the original motivation for why BN helps training/generalization was originally attributed to reducing the
+so-called Internal Covariance Shift (ICS) [26]. However, this
+was disputed in the recent study of [45]. In particular, the
+work of [45] used first-order analysis to analyze the loss
+landscape, and found that adding a BN layer results in a
+smoother loss landscape. Importantly, they found that adding
+BN does not reduce the so called ICS. Again, while interesting,
+such first-order analysis may not fully capture the topology
+of the landscape; and, as we will show with our second-order
+analysis, this smoothness claim is not correct in general.
+The work of [45] also performed an interesting theoretical
+analysis, showing a connection between adding the BN layer
+and the Lipschitz constant of the gradient (i.e., the top Hessian
+eigenvalue). It was argued that adding the BN layer leads to a
+smaller Lipschitz constant. However, the theoretical analysis
+is only valid for per-layer Lipschitz constant, as it ignores
+the complex interaction between different layers. It cannot be
+extended to the Lipschitz constant of the entire model (and, as
+we will show, this result does not hold for shallow networks).
+III. METHODOLOGYFor a supervised learning problem, we seek to minimize:minθ L(θ) = 1NN∑i=1l(M (xi), yi, θ), (1)
+where θ ∈ Rm is the learnable weight parameter, l(M (x), y, θ)is the loss function, (x, y) is the input pair, M is the NN
+architecture, and N is the size of training data. Below we first
+discuss how PYHESSIAN computes the second-order statistics,
+and we then discuss the impact of architectural components
+on the trainability of the model.
+3A. Neural Network Hessian MatvecFor a NN with m parameters, the gradient of the loss w.r.t.
+model parameters is a vector∂L
+∂θ = gθ ∈ Rm,and the second derivative of the loss is a matrix,H = ∂2L
+∂θ2 = ∂gθ∂θ ∈ Rm×m,commonly called the Hessian. A typical NN model involves
+millions of parameters, and thus even forming the Hessian is
+computationally infeasible. However, it is possible to compute
+properties of the Hessian spectrum without explicitly forming
+the Hessian matrix. Instead, all we need is an oracle to compute
+the application of the Hessian to a random vector v. This can
+be achieved by observing the following:∂gT
+θ v
+∂θ = ∂gT
+θ∂θ v + gT
+θ∂v
+∂θ = ∂gT
+θ∂θ v = Hv. (2)
+Here, the first equality is the chain rule, the second is due
+to the independence of v to θ, and the third equality is the
+definition of the Hessian. Importantly, note that the cost of this
+Hessian matrix-vector multiply (hereafter referred to as Hessian
+matvec) is the same as one gradient backpropagation. Having
+this oracle, we can easily compute the top k Hessian eigenvalues
+using power iteration [53]; see Algorithm 2. However, for a
+typical NN with millions of parameters, the top eigenvalues
+may not be representative of how the loss landscape behaves.
+Therefore, we also compute the trace and ESD of the Hessian,
+as described below.B. Hutchinson Method for Hessian Trace ComputationThe trace of the Hessian can be computed using RandNLA,
+and in particular with Hutchinson’s method [4, 5] for the
+fast computation of the trace, using only Hessian matvec
+computations (as given in Eq. 2). In particular, since we are
+interested in the Hessian, i.e., a symmetric matrix, suppose we
+have a random vector v, whose components are i.i.d. sampled
+from a Rademacher distribution (or Gaussian distribution with
+mean 0 and variance 1). Then, we have the identityT r(H) = T r(HI) = T r(HE[vvT ]) = E[T r(HvvT )]
+= E[vT Hv], (3)
+where I is the identity matrix of appropriate size. That is, the
+trace of H can be estimated by computing E[vT Hv], where we
+compute the expectation by drawing multiple random samples.
+Note that Hv can be efficiently computed from Eq. 2, and thenvT Hv is simply a dot product between the Hessian matvec
+and the original vector v. See Algorithm 3 for a description.C. Full Eigenvalue Spectral DensityTo provide finer-grained information on the Hessian spectrum
+than is provided by the top eigenvalues or the trace, we need
+to compute the full empirical spectral density (ESD) of the
+Hessian eigenvalues, defined asφ(t) = 1mm∑i=1δ(t − λi), (4)Algorithm 1: Stochastic Lanczos Quadrature for ESD
+ComputationInput: Parameter: θ, degree m and nv .
+Compute the gradient of θ by backpropagation, i.e.,
+compute gθ = dL
+dθ .for i = 1, 2, . . . nv do // Different SeedsDraw a random vector v from N(0,1) and normalize it
+(same dimension as θ).
+Get the tridiagonal matrix T through Lanczos
+algorithm.
+Compute τ (i)k and  ̃λ(i)k from T
+φziσ = ∑q
+k=1 τkf ( ̃λk; t, σ)Return φ(t) = 1nv∑nvl=1(∑q
+i=1 τ (l)i f ( ̃λ(l)i ; t, σ))where δ(·) is the Dirac distribut

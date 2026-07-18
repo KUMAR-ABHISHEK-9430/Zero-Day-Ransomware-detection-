@@ -1,0 +1,52 @@
+Apache Kafka Deep Dive
+When to use Kafka?
+Kafka is used as a Message Stream.
+
+Kafka also has very high throughput. This means you can dump a lot of data simultaneously in Kafka, and it can handle it without crashing.
+
+Ex: Suppose Uber is tracking the driver’s location. After every 2 seconds, get the driver’s location and insert it. If there are thousands of drivers and we do thousands of writes in the Database every 2 sec, then the Database might go down because DB’s throughput (no. of operations per sec) is low. We can put those data every 2 sec in Kafka because its throughput is very high. After every 10 minutes, the consumer will take those bulk data from Kafka and write them into the DB. In this way, we perform operations in DB every 10 minutes, not every 2 sec.
+
+Kafka Internals
+Producer: Publishes messages to Kafka. As for sending email, the producer can send {“email”, “message”} to the Kafka.
+Consumer: Subscribes to Kafka topics and processes the feed of messages.
+Broker: Kafka server that stores and manages the topics.
+Topic: A category/feed name to which records are published.
+sendEmail can be a topic.
+writeLocationToDB can be a topic.
+Let’s take the analogy of a Database:
+Broker = Database Server
+Topics = Tables
+Partition: Each topic is divided into partitions for parallelism. Partition is similar to sharding in DB Tables. On what basis do we do partition? For that, we have to decide and code it ourselves.
+Suppose, for our sendNotification topic, we partition it based on location. North Indian’s data goes to Partition 1, and South Indian’s data goes to Partition 2.
+Consumer Groups: When we make a consumer that subscribes to a topic, we have to assign a group to the consumer. Each consumer within a group does one type of processing from a subset of partitions.
+Ex: For video processing, as we saw earlier, we can have two consumer groups. One consumer group is for video transcoding, and the other consumer group is for caption generating.
+Let’s consider a topic with four partitions and one consumer group with three consumers (maybe 3 different servers part of the same consumer group) subscribed to that topic.
+
+Partitions: [Partition-0, Partition-1, Partition-2, Partition-3]
+
+Consumers: [Consumer-1, Consumer-2, Consumer-3]
+
+In this scenario, Kafka performs a rebalance to distribute partitions among consumers. This rebalancing of Kafka does its own. We don’t have to write code for it.
+
+Consumer-1 is assigned to Partition-0, Consumer-2 to Partition-1, Partition-2 and Consumer-3 to Partition-3.
+
+Press enter or click to view image in full size
+
+If the number of consumers subscribed to a topic in a group is greater than the number of partitions of that topic, then each consumer processes 1 partition, and the extra consumers don’t do anything.
+
+This means 1 partition of a topic can be processed by only 1 consumer of one group, but different consumers of different groups can process the same topic.
+
+Press enter or click to view image in full size
+
+Did you understand? If we want to horizontally scale our consumers, then we have to also do at least an equal number of partitions of the topic as the consumers.
+
+Below pic, you can see that we have two different consumer groups, one for video transcoding and the other for caption generating. And you can also see that Kafka balanced all the partitions between the consumers of each group.
+
+Press enter or click to view image in full size
+
+That’s it for Kafka's theoretical part.
+
+Exercise for you: Your task is to set up Kafka locally on your laptop and code any application which involves Kafka in NodeJS (or any other framework) so that you will get a better understanding. I am not showing code here, but I have taught all the required theories. The coding part is easy when you understand the theory.
+
+Realtime Pubsub
+In Message Broker, whenever a publisher pushes a message to the message broker, it remains in the broker until the consumer pulls it from it. How message is pulled from the broker? All message brokers like AWS SQS provides APIs (or SDK) to do this.
