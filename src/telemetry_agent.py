@@ -6,10 +6,17 @@ import threading
 import os
 import ctypes
 from collections import OrderedDict
-
-# Native Windows ETW Dependencies
 import etw
 from etw import evntrace, ProviderInfo, GUID, ETW
+
+
+
+# Shared Global Buffers
+telemetry_queue = queue.Queue(maxsize=100000) 
+process_metadata_cache = {} 
+cache_lock = threading.Lock() 
+
+
 
 # ==========================================
 # PART 1: NT DEVICE PATH RESOLUTION
@@ -75,17 +82,12 @@ class LRUCache:
             if key in self.cache:
                 del self.cache[key]
 
+file_pointer_cache = LRUCache(capacity=20000)
 
 
 # TODO: Test the optimal capacity of telemetry queue and LRU cache.
 # 
 #  
-
-# Shared Global Buffers
-telemetry_queue = queue.Queue(maxsize=100000) 
-process_metadata_cache = {} 
-file_pointer_cache = LRUCache(capacity=20000)
-cache_lock = threading.Lock() 
 
 # ==========================================
 # PART 3: FEATURE EXTRACTION
