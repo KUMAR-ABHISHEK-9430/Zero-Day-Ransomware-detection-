@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+from config import cfg
 
 class LSTMAutoencoder(nn.Module):
     """
@@ -7,7 +8,13 @@ class LSTMAutoencoder(nn.Module):
     Input Shape:  [batch_size, seq_len=30, input_dim=10]
     Output Shape: [batch_size, seq_len=30, input_dim=10]
     """
-    def __init__(self, input_dim=10, seq_len=30, hidden_dim=64, latent_dim=32, num_layers=2):
+    def __init__(self, 
+                 input_dim=cfg.model.INPUT_DIM, 
+                 seq_len=cfg.model.SEQ_LEN, 
+                 hidden_dim=cfg.model.HIDDEN_DIM, 
+                 latent_dim=cfg.model.LATENT_DIM, 
+                 num_layers=cfg.model.NUM_LAYERS):
+                 
         super().__init__()
         self.seq_len = seq_len
         self.input_dim = input_dim

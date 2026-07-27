@@ -359,7 +359,7 @@ def main():
     print(" AegisStream Telemetry Agent (Production Ingress) ")
     print("==================================================\n")
     
-    OUTPUT_LOG_PATH = "./data/raw_telemetry/system_telemetry.jsonl"
+    OUTPUT_LOG_PATH = "./data/raw_telemetry/system_telemetry2.jsonl"
     
     consumer = StreamConsumer(output_path=OUTPUT_LOG_PATH, event_queue=telemetry_queue)
     consumer.start()
