@@ -5,24 +5,18 @@ import time
 from collections import deque, defaultdict
 from pathlib import Path
 import numpy as np
+from config import cfg
 
 # =====================================================================
 # PIPELINE CONFIGURATION
 # =====================================================================
-WINDOW_SIZE = 30         # Number of sequential events per matrix (W)
-STRIDE = 5               # Events to slide before emitting new window (S)
-TTL_SECONDS = 300        # Inactivity timeout to evict stale PIDs from RAM (5 min)
-CLEANUP_INTERVAL = 1000  # Process event count between TTL sweeps
+WINDOW_SIZE = cfg.features.WINDOW_SIZE
+STRIDE = cfg.features.STRIDE
+TTL_SECONDS = cfg.features.TTL_SECONDS
+SCRIPT_HOSTS = cfg.features.SCRIPT_HOSTS
+USER_DATA_DIRS = cfg.features.USER_DATA_DIRS
 
-SCRIPT_HOSTS = {
-    'cmd.exe', 'powershell.exe', 'wscript.exe', 
-    'cscript.exe', 'python.exe', 'bash.exe', 'mshta.exe'
-}
 
-USER_DATA_DIRS = {
-    '\\documents\\', '\\desktop\\', '\\pictures\\', 
-    '\\downloads\\', '\\videos\\', '\\music\\'
-}
 
 # =====================================================================
 # FEATURE EXTRACTOR (F = 10)
