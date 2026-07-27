@@ -8,15 +8,16 @@ import numpy as np
 
 from dataset import create_dataloaders, ShardedTelemetryDataset
 from model import LSTMAutoencoder
+from config import cfg
 
 # =====================================================================
 # CONFIGURATION
 # =====================================================================
-DATA_DIR = "./data/processed"
+# DATA_DIR = "./data/processed"
 CHECKPOINT_DIR = "./checkpoints"
-BATCH_SIZE = 128
+# BATCH_SIZE = 128
 EPOCHS = 30
-LEARNING_RATE = 1e-3
+# LEARNING_RATE = 1e-3
 PATIENCE = 5  # Early stopping patience
 
 # Select acceleration backend
@@ -30,9 +31,9 @@ def train_model():
 
     # 1. Prepare Data
     train_loader, val_loader = create_dataloaders(
-        data_dir=DATA_DIR,
-        batch_size=BATCH_SIZE,
-        train_split=0.8
+        data_dir=cfg.paths.PROCESSED_DATA_DIR,
+        batch_size=cfg.train.BATCH_SIZE,
+        train_split=cfg.train.TRAIN_SPLIT
     )
 
     # 2. Instantiate Model
@@ -48,7 +49,11 @@ def train_model():
         model = raw_model
 
     criterion = nn.MSELoss()
-    optimizer = torch.optim.AdamW(model.parameters(), lr=LEARNING_RATE, weight_decay=1e-4)
+    optimizer = torch.optim.AdamW(
+        model.parameters(), 
+        lr=cfg.train.LEARNING_RATE, 
+        weight_decay=cfg.train.WEIGHT_DECAY
+    )
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.5, patience=2)
 
     # Initialize PyTorch AMP Scaler
