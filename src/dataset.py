@@ -3,6 +3,8 @@ import glob
 import numpy as np
 import torch
 from torch.utils.data import Dataset, DataLoader
+from config import cfg
+
 
 class ShardedTelemetryDataset(Dataset):
     """
@@ -50,7 +52,11 @@ class ShardedTelemetryDataset(Dataset):
         return torch.from_numpy(sample.copy()).float()
 
 
-def create_dataloaders(data_dir, batch_size=64, train_split=0.8, num_workers=2):
+def create_dataloaders(data_dir=cfg.paths.PROCESSED_DATA_DIR, 
+                       batch_size=cfg.train.BATCH_SIZE, 
+                       train_split=cfg.train.TRAIN_SPLIT, 
+                       num_workers=cfg.train.NUM_WORKERS):
+                       
     """Creates train and validation DataLoaders from peacetime telemetry shards."""
     full_dataset = ShardedTelemetryDataset(data_dir=data_dir, prefix="X_system_telemetry")
     
